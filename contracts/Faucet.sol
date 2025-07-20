@@ -16,6 +16,7 @@ contract Faucet {
     }
 
     function withdrawAll() public onlyOwner {
+        // owner.transfer(address(this).balance);
         (bool sent, ) = owner.call{value: address(this).balance}("");
         require(sent, "Failed to withdraw all funds");
     }
@@ -28,4 +29,6 @@ contract Faucet {
         require(msg.sender == owner);
         _;
     }
+
+    receive() external payable {}
 }
