@@ -14,12 +14,24 @@ describe("Fuacet", () => {
 
     console.log("Signer 1 address: ", owner.address);
 
-    return { faucet, owner };
+    let withdrawalAmount = ethers.parseEther("1");
+
+    return { faucet, owner, withdrawalAmount };
   }
 
   it("Should deploy and set owner correctly", async () => {
     const { faucet, owner } = await loadFixture(deployContractAndSetVariables);
 
     expect(await faucet.owner()).to.equal(owner.address);
+  });
+
+  it("Should not allow withdrawals over 0.1 ETH at a time", async () => {
+    const { faucet, withdrawalAmount } = await loadFixture(
+      deployContractAndSetVariables
+    );
+    console.log(`withdrawalAmount: ${withdrawalAmount} gwei`);
+    await expect(faucet.withdraw(withdrawalAmount)).to.be.revertedWith(
+      "Cannot withdraw more than 0.1 ETH"
+    );
   });
 });

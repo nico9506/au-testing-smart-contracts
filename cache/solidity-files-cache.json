@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/nlopez/GitHub/au-testing-smart-contracts/contracts/Faucet.sol": {
-      "lastModificationDate": 1752991003314,
-      "contentHash": "e9da0e8ad68211b22ecc0c3514ce12de",
+      "lastModificationDate": 1753008731283,
+      "contentHash": "2b64c466dd4f95857e470b8b6792a853",
       "sourceName": "contracts/Faucet.sol",
       "solcConfig": {
         "version": "0.8.28",
